@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form" xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog title="Capture Signature" contentWidth="80%" contentHeight="70%">
+        <content>
+            <VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop" backgroundDesign="Solid" alignContent="SpaceBetween" width="97%" height="98%">
+                <Text wrapping="true" class="sapUiSmallMarginBottom" text="I authorize CentiMark to access the facility to perform repair work necessary on a Time and Material basis or under an existing warranty, or to complete a Preventive Maintenance Inspection. All work will be in complience with State and Federal OSHA requirements. By my signature below, I certify that I have authority to bind the purchaseand have had the opportunity to review the Terms and the Agreement." ></Text>
+                <FlexBox alignContent="Stretch" fitContainer="true" justifyContent="Center" alignItems="Center">
+                    <core:HTML id="html" content="&lt;canvas id='signature-pad' class='signature-pad'&gt;&lt;/canvas&gt;" ></core:HTML>
+                </FlexBox>
+                <!-- <core:HTML id="html"></core:HTML> -->
+            </VBox>
+        </content>
+        <buttons>
+            <Button text="Clear" press="onClearSign" />
+            <Button text="Skip" press="onSkipSign" />
+            <Button text="Proceed" press="onProceedSign" />
+        </buttons>
+        <!-- <beginButton>
+            <Button text="Skip" press="onSkipSignature" />
+        </beginButton>
+        <endButton>
+            <Button text="Proceed" press="onProceed" />
+        </endButton> -->
+    </Dialog>
+</core:FragmentDefinition>

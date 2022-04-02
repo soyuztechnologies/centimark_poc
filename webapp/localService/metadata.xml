@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZCENTI_ODATA_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="Notifications" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="NOT_NO"/>
+                </Key>
+                <Property Name="NOT_NO" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NOT_NUM" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="USERNAME" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="CUSTOMER" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="STATUS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DESCRIPTION" Type="Edm.String" sap:unicode="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="JOB_TYPE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SIGNATURE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IS_SKIP" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Indicator" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SIGN_REASON" Type="Edm.String" sap:unicode="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAVBuilding" Relationship="ZCENTI_ODATA_SRV.Notifications_Building" FromRole="FromRole_Notifications_Building" ToRole="ToRole_Notifications_Building"/>
+            </EntityType>
+            <EntityType Name="Building" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="NOT_NO"/>
+                    <PropertyRef Name="BUID_ID"/>
+                </Key>
+                <Property Name="NOT_NO" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BUID_ID" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NAME" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="COMMENTS" Type="Edm.String" sap:unicode="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PHOTO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="NAVSetup" Relationship="ZCENTI_ODATA_SRV.Building_Setup" FromRole="FromRole_Building_Setup" ToRole="ToRole_Building_Setup"/>
+            </EntityType>
+            <EntityType Name="Setup" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="NOT_NO"/>
+                    <PropertyRef Name="BUID_ID"/>
+                    <PropertyRef Name="SETUP_ID"/>
+                </Key>
+                <Property Name="NOT_NO" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BUID_ID" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SETUP_ID" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NAME" Type="Edm.String" sap:unicode="false"/>
+                <NavigationProperty Name="NAV2Safety" Relationship="ZCENTI_ODATA_SRV.Setup_safety1" FromRole="FromRole_Setup_safety1" ToRole="ToRole_Setup_safety1"/>
+            </EntityType>
+            <EntityType Name="Safety" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="NOT_NO"/>
+                    <PropertyRef Name="BUID_ID"/>
+                    <PropertyRef Name="SETUP_ID"/>
+                    <PropertyRef Name="SAFETY_ID"/>
+                </Key>
+                <Property Name="NOT_NO" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BUID_ID" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SETUP_ID" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="SAFETY_ID" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="STEMP" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:filterable="false"/>
+                <Property Name="PHOTO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="STATUS" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LONG_TEXT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="COMMENTS" Type="Edm.String" sap:unicode="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Template" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="STEMP"/>
+                </Key>
+                <Property Name="STEMP" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TYPE" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false"/>
+                <Property Name="NAME" Type="Edm.String" Nullable="false" sap:unicode="false"/>
+                <Property Name="IS_REQ" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Indicator" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="Setup_safety1" sap:content-version="1">
+                <End Type="ZCENTI_ODATA_SRV.Setup" Multiplicity="1" Role="FromRole_Setup_safety1"/>
+                <End Type="ZCENTI_ODATA_SRV.Safety" Multiplicity="*" Role="ToRole_Setup_safety1"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Setup_safety1">
+                        <PropertyRef Name="SETUP_ID"/>
+                        <PropertyRef Name="BUID_ID"/>
+                        <PropertyRef Name="NOT_NO"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Setup_safety1">
+                        <PropertyRef Name="SETUP_ID"/>
+                        <PropertyRef Name="BUID_ID"/>
+                        <PropertyRef Name="NOT_NO"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Notifications_Building" sap:content-version="1">
+                <End Type="ZCENTI_ODATA_SRV.Notifications" Multiplicity="1" Role="FromRole_Notifications_Building"/>
+                <End Type="ZCENTI_ODATA_SRV.Building" Multiplicity="*" Role="ToRole_Notifications_Building"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Notifications_Building">
+                        <PropertyRef Name="NOT_NO"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Notifications_Building">
+                        <PropertyRef Name="NOT_NO"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Building_Setup" sap:content-version="1">
+                <End Type="ZCENTI_ODATA_SRV.Building" Multiplicity="1" Role="FromRole_Building_Setup"/>
+                <End Type="ZCENTI_ODATA_SRV.Setup" Multiplicity="*" Role="ToRole_Building_Setup"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Building_Setup">
+                        <PropertyRef Name="BUID_ID"/>
+                        <PropertyRef Name="NOT_NO"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Building_Setup">
+                        <PropertyRef Name="BUID_ID"/>
+                        <PropertyRef Name="NOT_NO"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZCENTI_ODATA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="NotificationsSet" EntityType="ZCENTI_ODATA_SRV.Notifications" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="BuildingSet" EntityType="ZCENTI_ODATA_SRV.Building" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SetupSet" EntityType="ZCENTI_ODATA_SRV.Setup" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SafetySet" EntityType="ZCENTI_ODATA_SRV.Safety" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="TemplateSet" EntityType="ZCENTI_ODATA_SRV.Template" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="Notifications_BuildingSet" Association="ZCENTI_ODATA_SRV.Notifications_Building" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="NotificationsSet" Role="FromRole_Notifications_Building"/>
+                    <End EntitySet="BuildingSet" Role="ToRole_Notifications_Building"/>
+                </AssociationSet>
+                <AssociationSet Name="Building_SetupSet" Association="ZCENTI_ODATA_SRV.Building_Setup" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="BuildingSet" Role="FromRole_Building_Setup"/>
+                    <End EntitySet="SetupSet" Role="ToRole_Building_Setup"/>
+                </AssociationSet>
+                <AssociationSet Name="Setup_safetySet01" Association="ZCENTI_ODATA_SRV.Setup_safety1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SetupSet" Role="FromRole_Setup_safety1"/>
+                    <End EntitySet="SafetySet" Role="ToRole_Setup_safety1"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://s4dev.st.com:8021/sap/opu/odata/sap/ZCENTI_ODATA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://s4dev.st.com:8021/sap/opu/odata/sap/ZCENTI_ODATA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

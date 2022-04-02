@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form" xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog showHeader="false" contentWidth="auto" contentHeight="auto">
+        <content>
+            <RadioButtonGroup class="sapUiSmallMarginTopBottom sapUiSmallMarginBeginEnd" >
+                <RadioButton text="Building Vacant" />
+                <RadioButton text="Customer not available" />
+                <RadioButton text="Signature Refused" />
+                <RadioButton text="Customer approved via phone" />
+                <RadioButton text="Tenant not permitted to sign" />
+            </RadioButtonGroup>
+        </content>
+        <buttons>
+            <Button text="Cancel" press="onCancelReason" />
+            <Button text="Confirm" press="onProceedSign" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

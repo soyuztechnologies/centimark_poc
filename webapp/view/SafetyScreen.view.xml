@@ -1,0 +1,21 @@
+<mvc:View xmlns:core="sap.ui.core" 
+    controllerName="poc.centi.mark.centimarkui.controller.SafetyScreen"    
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m" >
+    <Page >
+        <headerContent >
+            <Toolbar width="100%" >
+                <Button icon="sap-icon://paging"></Button>
+                <Text text="Please Select a Notification" ></Text>
+                <ToolbarSpacer />
+                <Button icon="sap-icon://filter" />
+                <Button icon="sap-icon://refresh" />
+            </Toolbar>
+        </headerContent>
+        <content>
+            
+        </content>
+    </Page>
+    
+</mvc:View>

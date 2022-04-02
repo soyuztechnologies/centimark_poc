@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form" xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog  title="Create Setup" contentWidth="auto" contentHeight="auto">
+        <content>
+            <form:SimpleForm >
+                <Label text="Enter Setup Name" />
+                <Input></Input>
+            </form:SimpleForm>
+        </content>
+        <buttons>
+            <Button text="Cancel" press="onCancelSetup" />
+            <Button text="Confirm" press="onConfirmSetup" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

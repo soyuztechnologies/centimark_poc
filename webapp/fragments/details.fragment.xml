@@ -1,0 +1,69 @@
+<core:FragmentDefinition xmlns:form="sap.ui.layout.form" xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog title="Service Notification Details for {local>/NotificationNum}" contentWidth="90%" contentHeight="80%">
+        <content>
+            <form:SimpleForm layout="ResponsiveGridLayout" columnsM="2" columnsL="2">
+                <core:Title text="Work Address" />
+                <core:Icon src="sap-icon://map" color="" press="onMapIconPress" size="40px" ></core:Icon>
+                <Text text="LA QUINTA AND SUITES&#10;400 SARGENT DR&#10;NEW HAVEN CT 06511&#10;Contact: SEAN GLANCY&#10;Phone:XXXX-XXXX-XXXX&#10;Bill to Customer:00011001111" ></Text>
+                <core:Title text="Miscellaneous Information" />
+                <Label text="Store #"/>
+                <Text text="2048"/>
+                <Label text="Tenent Name"/>
+                <Text text="xyz_abc"/>
+                <Label text="Warrenty #"/>
+                <Text text="00000000000014512587"/>
+                <Label text="Expires"/>
+                <Text text="20331002"/>
+                <Label text="P.O. #"/>
+                <Text text="457845"/>
+                <Label text="Not to Exceed"/>
+                <Text text="1,000.00"/>
+                <Label text="Reported By"/>
+                <Text text="Steve Rogers"/>
+            </form:SimpleForm>
+            <Panel headerText="Problem Description" expandable="true" expand="false" >
+                <content>
+                    <Text text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ornare, nibh nec gravida tincidunt, ipsum quam venenatis nisl, vitae venenatis urna sem eget ipsum. Ut cursus auctor leo et vulputate. Curabitur nec pretium odio, sed auctor felis. In vehicula, eros aliquam pharetra mattis, ante mi fermentum massa, nec pharetra arcu massa finibus augue." />
+                </content>
+            </Panel>
+            <Panel headerText="Requirements" expandable="true" expand="false">
+                <content>
+                    <form:SimpleForm labelSpanL="2">
+                        <Label text="BILL MATERIAL" textDirection="RTL" design="Bold" />
+                        <Text text="YES" />
+                        <Label text="CHECK-IN PREOCESS" textDirection="RTL" design="Bold"/>
+                        <Text text="CUSTOMER SIGNATURE" />
+                        <Label text="CHECK-OUT PROCESS" textDirection="RTL" design="Bold"/>
+                        <Text text="CUSTOMER SIGNATURE" />
+                        <Label text="CLOSE OUT NUMBER" textDirection="RTL" design="Bold"/>
+                        <Text text="NO" />
+                        <Label text="CUSTOMER SERVICE REP" textDirection="RTL" design="Bold"/>
+                        <Text text="STACY GALICIC" />
+                        <Label text="DISPLAY DISCOUNT AS A SEPERATE LINE ITEM" textDirection="RTL" design="Bold"/>
+                        <Text text="NO" />
+                        <Label text="DISPLAY PO ON INVOICE" textDirection="RTL" design="Bold"/>
+                        <Text text="NO" />
+                        <Label text="DISPLAY PROPERTY/LOCATION ID ON INVOICE" textDirection="RTL" design="Bold"/>
+                        <Text text="NO" />
+                        <Label text="ENROLLED IN CUSTOMER SERVICE" textDirection="RTL" design="Bold"/>
+                        <Text text="YES" />
+                        <Label text="NET AMOUNT" textDirection="RTL" design="Bold"/>
+                        <Text text="1000" />
+                        <Label text="NTE APPROVAL PROCESS" textDirection="RTL" design="Bold"/>
+                        <Text text="CUSTOMER SERVICE" />
+                        <Label text="REQUIRE AS ITEMIZED INVOICE" textDirection="RTL" design="Bold"/>
+                        <Text text="NO" />
+                        <Label text="REQUIRE LIEN WAIVER" textDirection="RTL" design="Bold" />
+                        <Text text="NO-AIA'S AND LIEN WAIVERS REQUIRED ON JOBS." />
+                    </form:SimpleForm>
+                </content>
+            </Panel>
+        </content>
+        <beginButton>
+            <Button text="Cancel" press="onCloseDetail" />
+        </beginButton>
+        <endButton>
+            <Button text="Continue Working" press="onContinueWork" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

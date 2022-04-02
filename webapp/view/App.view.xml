@@ -1,0 +1,23 @@
+<mvc:View
+    controllerName="poc.centi.mark.centimarkui.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <App id="app">
+        <pages>
+            <Page id="page" class="myPageBgClr" showHeader="false" title="{i18n>title}">
+                <content>
+                    <FlexBox width="100%" height="100%" alignItems="Center" justifyContent="Center" alignContent="Center">
+                        <VBox alignContent="Center" justifyContent="Center" alignItems="Center" >
+                            <items>
+                                <Image height="100px" width="100%" src="https://www.seekpng.com/png/detail/912-9127902_centimark-channel-for-roofing-and-flooring-videos-graphic.png" ></Image>
+                                <Button text="Login" press="onLogin" ></Button>
+                            </items>
+                        </VBox>
+                    </FlexBox>
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
