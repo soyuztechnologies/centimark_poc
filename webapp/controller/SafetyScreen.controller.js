@@ -9,7 +9,18 @@ sap.ui.define([
             this.oRouter.getRoute('safetyScreen').attachMatched(this.handleRouteMatched , this)
         },
         handleRouteMatched: function(oEvent) {
-            
+            var sNotId = oEvent.getParameter("arguments").NtfID;
+            // var sBuildID = oEvent.getParameter("arguments").BuildID;
+            if(sNotId) {
+                this.NotId = sNotId;
+                var oModel = this.getView().getModel();
+                var sPath = oModel.createKey("/NotificationsSet", {
+                    NOT_NO: sNotId
+                });
+                this.getView().bindElement(sPath, {
+                    expand: "NAVBuilding"
+                });
+            }
         }
     });
 });

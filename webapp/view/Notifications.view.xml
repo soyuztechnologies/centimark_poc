@@ -14,7 +14,7 @@
             </Toolbar>
         </headerContent>
         <content>
-            <List items="{/NotificationsSet}" class="mainListDesign" backgroundDesign="Solid" >
+            <List width="auto" items="{/NotificationsSet}" class="sapUiLargeMarginBeginEnd sapUiSmallMarginTop" backgroundDesign="Solid" >
                 <headerToolbar>
                     <Toolbar class="sapUiLargeMarginBeginEnd" >
                         <ToolbarSpacer />

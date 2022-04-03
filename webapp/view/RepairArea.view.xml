@@ -16,8 +16,8 @@
                 <f:GridList width="auto" class="sapUiLargeMarginBeginEnd sapUiSmallMarginTop" itemPress="onPressRepairTile" >
                     <f:headerToolbar>
                         <Toolbar >
-                            <core:Icon src="sap-icon://edit" decorative="true"  ></core:Icon>
-                            <Title text="Repair Area" />
+                            <core:Icon src="sap-icon://edit" decorative="true" press="onEditBuilding" ></core:Icon>
+                            <Title text="{local>/BuildingName}" />
                             <ToolbarSpacer />
                             <Button icon="sap-icon://add" text="CREATE BUILDING" ></Button>
                         </Toolbar>

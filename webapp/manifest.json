@@ -112,7 +112,15 @@
           "target": [
             "RepairAreaScreen"
           ]
+        },
+        {
+          "name": "safetyScreen",
+          "pattern": "Safety/{NtfID}",
+          "target": [
+            "SafetyDashboard"
+          ]
         }
+
       ],
       "targets": {
         "TargetApp": {
@@ -135,6 +143,13 @@
           "clearControlAggregation": false,
           "viewId": "idRepairView",
           "viewName": "RepairArea"
+        },
+        "SafetyDashboard": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "idSafetyView",
+          "viewName": "SafetyScreen"
         }
       }
     },

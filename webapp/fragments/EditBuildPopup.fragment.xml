@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns:unified="sap.ui.unified" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog showHeader="true" title="Edit Building" contentWidth="80%" contentHeight="auto">
+        <content>
+            <VBox class="sapUiTinyMarginBeginEnd" >
+                <items>
+                    <form:SimpleForm editable="true" layout="ColumnLayout" columnsL="2" columnsM="2" >
+                        <Label text="Enter Building Name" />
+                        <Input id="buildingNameField" ></Input>
+                    </form:SimpleForm>
+                    <layout:BlockLayout >
+                        <layout:BlockLayoutRow >
+                            <layout:BlockLayoutCell >
+                                <VBox alignContent="Center" class="sapUiSmallMarginTopBottom sapUiSmallMarginBeginEnd" alignItems="Center" justifyContent="Center" >
+                                    <items>
+                                        <Label text="Building Overview Photo" design="Bold" />
+                                        <Image id="idBuildingImg" src="./images/camera_icon.png" press="onImgClick" width="100%" height="12rem" alt="" visible="true" ></Image>
+                                        <unified:FileUploader id="fileUploderField" style="Accept" mimeType="image/*" sameFilenameAllowed="true" icon="sap-icon://camera" change="onCaptureBuildImg" iconOnly="true" visible="true" iconFirst="true" buttonOnly="true" ></unified:FileUploader>
+                                    </items>
+                                </VBox>
+                            </layout:BlockLayoutCell>
+                            <layout:BlockLayoutCell >
+                                <form:SimpleForm >
+                                    <Label text="Comments" ></Label>
+                                    <TextArea cols="20" placeholder="Comments" rows="8" ></TextArea>
+                                </form:SimpleForm>
+                            </layout:BlockLayoutCell>
+                        </layout:BlockLayoutRow>
+                    </layout:BlockLayout>
+                </items>
+            </VBox>
+           
+
+        </content>
+        <buttons>
+            <Button text="Cancel" press="onCancelBuildPopup" />
+            <Button text="Confirm" press="onConfirmBuild" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

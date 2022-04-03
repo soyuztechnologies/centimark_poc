@@ -1,4 +1,4 @@
-<mvc:View xmlns:core="sap.ui.core" 
+<mvc:View xmlns:unified="sap.ui.unified" xmlns:core="sap.ui.core" 
     controllerName="poc.centi.mark.centimarkui.controller.SafetyScreen"    
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
@@ -7,14 +7,53 @@
         <headerContent >
             <Toolbar width="100%" >
                 <Button icon="sap-icon://paging"></Button>
-                <Text text="Please Select a Notification" ></Text>
+                <Text text="Safety Dashboard for {NOT_NUM}" ></Text>
                 <ToolbarSpacer />
-                <Button icon="sap-icon://filter" />
-                <Button icon="sap-icon://refresh" />
+                <Label text="Photos" />
+                <Switch state="true" ></Switch>
+                <Button icon="sap-icon://information" />
+                <Button icon="sap-icon://overflow" />
             </Toolbar>
         </headerContent>
         <content>
-            
+            <List width="auto" items="{/TemplateSet}" class="sapUiLargeMarginBeginEnd sapUiSmallMarginTop" >
+                <headerToolbar>
+                    <Toolbar class="sapUiLargeMarginBeginEnd" >
+                        <ToolbarSpacer />
+                        <Button text="Create Setup" icon="sap-icon://add" ></Button>
+                    </Toolbar>
+                </headerToolbar>
+                <items>
+                    <CustomListItem class="sapUiLargeMarginBeginEnd sapUiSmallMarginBottom" >
+                        <HBox alignContent="Center" alignItems="Center" justifyContent="SpaceBetween" height="100px" >
+                            <items>
+                                <HBox alignContent="Center" alignItems="Center" >
+                                    <items>
+                                        <core:Icon src="sap-icon://status-positive" size="2rem" class="sapUiLargeMarginBeginEnd" ></core:Icon>
+                                        <core:Icon src="sap-icon://notification-2" size="2rem" ></core:Icon>
+                                        <VBox justifyContent="Center" height="80px" width="120px" class="sapUiSmallMarginBeginEnd photoBoxDesign" backgroundDesign="Solid" alignItems="Center" alignContent="Start" >
+                                            <items>
+                                                <core:Icon src="sap-icon://camera" size="2rem" ></core:Icon>
+                                                <Label text="PHOTO" ></Label>
+                                                <Label text="REQUIRED" ></Label>
+                                            </items>
+                                        </VBox>
+                                        <VBox height="70px">
+                                            <items>
+                                                <Title text="{NAME}" ></Title>
+                                                <Label text="{TYPE}" ></Label>
+                                            </items>
+                                        </VBox>
+                                    </items>
+                                </HBox>
+                                <unified:FileUploader buttonText="CAPTURE PHOTO" buttonOnly="true" class="sapUiSmallMarginEnd" ></unified:FileUploader>
+                                <!-- <Image src="./images/camera_icon.png" class="sapUiSmallMarginBegin sapUiTinyMarginTopBottom" width="8rem" height="6rem"></Image> -->
+
+                            </items>
+                        </HBox>
+                    </CustomListItem>
+                </items>
+            </List>
         </content>
     </Page>
     
