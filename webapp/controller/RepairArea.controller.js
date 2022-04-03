@@ -97,7 +97,7 @@ sap.ui.define([
                     try {
                         debugger;
                         var vContent = e.currentTarget.result;
-                        oBuildImg.setSrc(that.convertFileToUrl(vContent));
+                        oBuildImg.setSrc(vContent);
                     } catch (err) {
                         console.log(err);
                     }

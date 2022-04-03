@@ -19,6 +19,9 @@
             <List width="auto" items="{/TemplateSet}" class="sapUiLargeMarginBeginEnd sapUiSmallMarginTop" >
                 <headerToolbar>
                     <Toolbar class="sapUiLargeMarginBeginEnd" >
+                        <!-- <Button icon="sap-icon://edit" text="Setup" type="Transparent" ></Button> -->
+                        <core:Icon src="sap-icon://edit" ></core:Icon>
+                        <Title text="Setup" ></Title>
                         <ToolbarSpacer />
                         <Button text="Create Setup" icon="sap-icon://add" ></Button>
                     </Toolbar>
@@ -29,24 +32,25 @@
                             <items>
                                 <HBox alignContent="Center" alignItems="Center" >
                                     <items>
-                                        <core:Icon src="sap-icon://status-positive" size="2rem" class="sapUiLargeMarginBeginEnd" ></core:Icon>
+                                        <core:Icon src="sap-icon://status-positive" color="#f9a429" size="2rem" class="sapUiLargeMarginBeginEnd" ></core:Icon>
                                         <core:Icon src="sap-icon://notification-2" size="2rem" ></core:Icon>
-                                        <VBox justifyContent="Center" height="80px" width="120px" class="sapUiSmallMarginBeginEnd photoBoxDesign" backgroundDesign="Solid" alignItems="Center" alignContent="Start" >
+                                        <VBox justifyContent="Center" height="80px" width="140px" class="sapUiSmallMarginBeginEnd photoBoxDesign" backgroundDesign="Solid" alignItems="Center" alignContent="Start" >
                                             <items>
-                                                <core:Icon src="sap-icon://camera" size="2rem" ></core:Icon>
-                                                <Label text="PHOTO" ></Label>
-                                                <Label text="REQUIRED" ></Label>
+                                                <core:Icon src="sap-icon://camera"  size="2rem" ></core:Icon>
+                                                <Text text="PHOTO" ></Text>
+                                                <Text text="REQUIRED" ></Text>
                                             </items>
                                         </VBox>
-                                        <VBox height="70px">
+                                        <Image  ></Image>
+                                        <VBox height="70px" justifyContent="SpaceBetween">
                                             <items>
                                                 <Title text="{NAME}" ></Title>
-                                                <Label text="{TYPE}" ></Label>
+                                                <Title text="{TYPE}" ></Title>
                                             </items>
                                         </VBox>
                                     </items>
                                 </HBox>
-                                <unified:FileUploader buttonText="CAPTURE PHOTO" buttonOnly="true" class="sapUiSmallMarginEnd" ></unified:FileUploader>
+                                <unified:FileUploader buttonText="CAPTURE PHOTO" buttonOnly="true" mimeType="image/*" sameFilenameAllowed="true" class="sapUiSmallMarginEnd" ></unified:FileUploader>
                                 <!-- <Image src="./images/camera_icon.png" class="sapUiSmallMarginBegin sapUiTinyMarginTopBottom" width="8rem" height="6rem"></Image> -->
 
                             </items>
