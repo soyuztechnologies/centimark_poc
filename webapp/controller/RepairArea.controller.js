@@ -42,7 +42,9 @@ sap.ui.define([
             this.SetupPopup.close();
         },
         onConfirmSetup: function() {
+            debugger;
             MessageToast.show("Will add the screen soon");
+            this.SetupPopup.close();
         },
         editBuildingPopup: null,
         onEditBuilding: function() {

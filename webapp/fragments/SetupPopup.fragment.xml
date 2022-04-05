@@ -3,7 +3,7 @@
         <content>
             <form:SimpleForm >
                 <Label text="Enter Setup Name" />
-                <Input></Input>
+                <Input id="idSetupName"></Input>
             </form:SimpleForm>
         </content>
         <buttons>

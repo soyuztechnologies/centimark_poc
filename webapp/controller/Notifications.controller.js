@@ -214,9 +214,15 @@ sap.ui.define([
             },
             onProceedSign: function() {
                 // MessageToast.show("Wait will implement it soon");
+                
                 this.oRouter.navTo("repairScreen", {
                     "NtfID": this.NotificationData.NOT_NO
                 });
+                // if(!this.EditBuildPopup) {
+                //     this.EditBuildPopup = sap.ui.xmlfragment("poc.centi.mark.centimarkui.fragments.EditBuildPopup", this);
+                //     this.getView().addDependent(this.EditBuildPopup);
+                // }
+                // this.EditBuildPopup.open();
             }
 
         });

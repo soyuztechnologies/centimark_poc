@@ -20,8 +20,8 @@
                 <headerToolbar>
                     <Toolbar class="sapUiLargeMarginBeginEnd" >
                         <!-- <Button icon="sap-icon://edit" text="Setup" type="Transparent" ></Button> -->
-                        <core:Icon src="sap-icon://edit" ></core:Icon>
-                        <Title text="Setup" ></Title>
+                        <core:Icon src="sap-icon://edit" press="onEditSetup"></core:Icon>
+                        <Title text="{local>/SetUpName}" ></Title>
                         <ToolbarSpacer />
                         <Button text="Create Setup" icon="sap-icon://add" ></Button>
                     </Toolbar>
@@ -39,9 +39,10 @@
                                                 <core:Icon src="sap-icon://camera"  size="2rem" ></core:Icon>
                                                 <Text text="PHOTO" ></Text>
                                                 <Text text="REQUIRED" ></Text>
+                                                <Image visible="false" height="90px" width="140px" ></Image>
                                             </items>
                                         </VBox>
-                                        <Image  ></Image>
+                                        
                                         <VBox height="70px" justifyContent="SpaceBetween">
                                             <items>
                                                 <Title text="{NAME}" ></Title>
@@ -50,7 +51,7 @@
                                         </VBox>
                                     </items>
                                 </HBox>
-                                <unified:FileUploader buttonText="CAPTURE PHOTO" buttonOnly="true" mimeType="image/*" sameFilenameAllowed="true" class="sapUiSmallMarginEnd" ></unified:FileUploader>
+                                <unified:FileUploader buttonText="CAPTURE PHOTO" buttonOnly="true" mimeType="image/*" sameFilenameAllowed="true" class="sapUiSmallMarginEnd" change="onPhotoCapture"></unified:FileUploader>
                                 <!-- <Image src="./images/camera_icon.png" class="sapUiSmallMarginBegin sapUiTinyMarginTopBottom" width="8rem" height="6rem"></Image> -->
 
                             </items>
