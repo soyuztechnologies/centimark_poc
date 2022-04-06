@@ -1,0 +1,30 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+>
+<Dialog title="Create New Notification">
+
+    <form:SimpleForm layout="ColumnLayout" columnsL="2" columnsM="1"  class="sapUiSmallMarginEnd">
+    
+         <!-- <Label text="Notification Number" design="Bold" />
+         <Input value="{local>/Not_Num}"/> -->
+    
+         <Label text="Name" design="Bold"/>
+         <Input value="{local>/Name}"/>
+    
+         <Label text="Comments" design="Bold"/>
+         <Input value="{local>/Comments}"/>
+    
+         <Label text="Photo" design="Bold"/>
+         <!-- <Input value="{local>/Description}"/> -->
+    
+    </form:SimpleForm>
+    <beginButton>
+        <Button type="Emphasized" text="Create" press="onClickCreate"/>
+    </beginButton>
+    <endButton>
+        <Button text="Cancel" press="onCancelNotif" type="Emphasized"/>
+    </endButton>
+    </Dialog>
+</c:FragmentDefinition>

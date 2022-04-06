@@ -2,6 +2,7 @@
     <Page>
         <headerContent >
             <Toolbar width="100%" >
+                <Button icon="sap-icon://arrow-left" press="onBack"/>
                 <Button icon="sap-icon://paging"></Button>
                 <Text text="Tasks for {NOT_NUM}" ></Text>
                 <ToolbarSpacer />

@@ -10,7 +10,7 @@
                 <Text text="Please Select a Notification" ></Text>
                 <ToolbarSpacer />
                 <Button icon="sap-icon://filter" />
-                <Button icon="sap-icon://refresh" />
+                <Button icon="sap-icon://refresh" press="onRefresh" />
             </Toolbar>
         </headerContent>
         <content>
@@ -18,7 +18,7 @@
                 <headerToolbar>
                     <Toolbar class="sapUiLargeMarginBeginEnd" >
                         <ToolbarSpacer />
-                        <Button text="Create New Notification" icon="sap-icon://add" ></Button>
+                        <Button text="Create New Notification" icon="sap-icon://add" press="onCreateNotifications"></Button>
                     </Toolbar>
                 </headerToolbar>
                 <CustomListItem class="sapUiLargeMarginBeginEnd sapUiSmallMarginBottom">
@@ -32,7 +32,7 @@
                                     <ObjectAttribute text="{DESCRIPTION}" />
                                 </ObjectHeader>
                             </HBox>
-                            <Button text="{STATUS}" width="150px" class="sapUiSmallMarginEnd" press="onListButtonPress"></Button>
+                            <Button text="{WP_STATUS}" width="150px" class="sapUiSmallMarginEnd" press="onListButtonPress"></Button>
                         </items>
                     </HBox>
                 </CustomListItem>

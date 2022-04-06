@@ -24,6 +24,9 @@ sap.ui.define([
             this.getView().getModel("local").setProperty("/BuildingName", "Repair Area");
 
         },
+        onBack: function(){
+            this.oRouter.navTo('NoticeView');  
+        },
         CreateBuilding: function() {
 
         },

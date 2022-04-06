@@ -24,6 +24,11 @@ sap.ui.define([
             }
             this.getView().getModel('local').setProperty('/SetUpName', 'Setup');
         },
+        onBack: function(){
+            this.oRouter.navTo('repairScreen',{
+                NtfID : this.NotId
+            });  
+        },
         onPhotoCapture : function (oEvent){
             debugger;
             var oItemsObject=oEvent.getSource().getParent().getItems()[0].getItems()[2].getItems();

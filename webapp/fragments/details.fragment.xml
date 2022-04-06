@@ -3,7 +3,8 @@
         <content>
             <form:SimpleForm layout="ResponsiveGridLayout" columnsM="2" columnsL="2">
                 <core:Title text="Work Address" />
-                <core:Icon src="sap-icon://map" color="" press="onMapIconPress" size="40px" ></core:Icon>
+                <!-- <core:Icon src="sap-icon://map" color="" press="onMapIconPress" size="40px" ></core:Icon>z -->
+                <Image src="../images/images.jpg"></Image>
                 <Text text="LA QUINTA AND SUITES&#10;400 SARGENT DR&#10;NEW HAVEN CT 06511&#10;Contact: SEAN GLANCY&#10;Phone:XXXX-XXXX-XXXX&#10;Bill to Customer:00011001111" ></Text>
                 <core:Title text="Miscellaneous Information" />
                 <Label text="Store #"/>

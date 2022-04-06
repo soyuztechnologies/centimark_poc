@@ -24,6 +24,45 @@ sap.ui.define([
                 }
                 this.AddressPopup.open();
             },
+            onRefresh:function(){
+                this.getView().getModel().refresh();
+            },
+            onCreateNotifications:function(){
+                if(!this.CreateNotification){
+                    this.CreateNotification = sap.ui.xmlfragment(this.getView().getId(), "poc.centi.mark.centimarkui.fragments.CreateNotification", this)
+                    this.getView().addDependent(this.CreateNotification);
+                }
+                this.CreateNotification.open();
+            },
+            onCancelNotif: function(){
+                this.CreateNotification.close();
+            },
+            onClickCreate:function(oEvent){
+                  debugger;
+                  var notifjobtyp = this.getView().byId('idJob').getSelectedItem().getProperty('text');
+                  var oNewNotif = this.getView().getModel('local').getProperty('/');
+                  var newNotifData = {
+                    "USERNAME": oNewNotif.Username,
+                    "CUSTOMER": oNewNotif.Customer,
+                    "STATUS": "Scheduled",
+                    "DESCRIPTION": oNewNotif.Description,
+                    "JOB_TYPE": notifjobtyp,
+                    "WP_STATUS" : 'S'
+                  }
+                //   var that = this;
+                  var oDataModel = this.getView().getModel();
+                  oDataModel.create('/NotificationsSet',newNotifData ,{
+                      success: function(odata){
+                          MessageToast.show('Notification Created Successfully');
+                      },
+                      error: function(oerrdata){
+                        MessageToast.show('Notification Creation Failed');
+                      }
+                  });
+                  this.CreateNotification.close();
+                //   this.getView().getModel().refresh();
+               
+            },
             onCloseDetail: function() {
                 this.AddressPopup.close();
             },
