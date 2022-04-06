@@ -49,6 +49,20 @@ sap.ui.define([
             }else {
                 return true;
             }
+        },
+        getIconStatusColor: function(sStatus) {
+            if(sStatus === 'Complete') {
+                return "#4caf50";
+            }else {
+                return "#f9a429";
+            }
+        },
+        getStatusIcon: function(sStatus) {
+            if(sStatus === 'Complete') {
+                return "sap-icon://accept";
+            }else {
+                return "sap-icon://status-positive";
+            }
         }
     }
 });

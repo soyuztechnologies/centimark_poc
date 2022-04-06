@@ -17,12 +17,15 @@
             </Toolbar>
         </headerContent>
         <content>
-            <List width="auto" id="idSafetyList" items="{/TemplateSet}" class="sapUiLargeMarginBeginEnd sapUiSmallMarginTop" >
+            <List width="auto" id="idSafetyList" items="{path: 'NAV2Safety', sorter: {
+                path: 'STEMP',
+                descending: false
+              }}" class="sapUiLargeMarginBeginEnd sapUiSmallMarginTop" >
                 <headerToolbar>
                     <Toolbar class="sapUiLargeMarginBeginEnd" >
                         <!-- <Button icon="sap-icon://edit" text="Setup" type="Transparent" ></Button> -->
                         <core:Icon src="sap-icon://edit" press="onEditSetup"></core:Icon>
-                        <Title text="{local>/SetUpName}" ></Title>
+                        <Title text="{NAME}" ></Title>
                         <ToolbarSpacer />
                         <Button text="Create Setup" icon="sap-icon://add" ></Button>
                     </Toolbar>
@@ -33,7 +36,7 @@
                             <items>
                                 <HBox alignContent="Center" alignItems="Center" >
                                     <items>
-                                        <core:Icon src="sap-icon://status-positive" color="#f9a429" size="2rem" class="sapUiLargeMarginBeginEnd" ></core:Icon>
+                                        <core:Icon src="{path: 'STATUS', formatter: '.formatter.getStatusIcon'}" color="{path: 'STATUS', formatter: '.formatter.getIconStatusColor'}" size="2rem" class="sapUiLargeMarginBeginEnd" ></core:Icon>
                                         <core:Icon src="sap-icon://notification-2" size="2rem" ></core:Icon>
                                         <VBox justifyContent="Center" visible="{path: 'PHOTO', formatter: '.formatter.getSaftyListImgBoxVisibility'}" height="80px" width="140px" class="sapUiSmallMarginBeginEnd photoBoxDesign" backgroundDesign="Solid" alignItems="Center" alignContent="Start" >
                                             <items>
