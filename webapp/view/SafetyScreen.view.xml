@@ -52,7 +52,7 @@
                                         </VBox>
                                     </items>
                                 </HBox>
-                                <unified:FileUploader buttonText="CAPTURE PHOTO" buttonOnly="true" mimeType="image/*" sameFilenameAllowed="true" class="sapUiSmallMarginEnd" change="onPhotoCapture"></unified:FileUploader>
+                                <unified:FileUploader buttonText="{local>/buttonTxt}" buttonOnly="true" mimeType="image/*" sameFilenameAllowed="true" class="sapUiSmallMarginEnd" change="onPhotoCapture"></unified:FileUploader>
                                 <!-- <Image src="./images/camera_icon.png" class="sapUiSmallMarginBegin sapUiTinyMarginTopBottom" width="8rem" height="6rem"></Image> -->
 
                             </items>

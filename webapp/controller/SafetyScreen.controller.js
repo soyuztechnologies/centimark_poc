@@ -23,6 +23,7 @@ sap.ui.define([
                 });
             }
             this.getView().getModel('local').setProperty('/SetUpName', 'Setup');
+            this.getView().getModel('local').setProperty('/buttonTxt', 'Capture Photo');
         },
         onBack: function(){
             this.oRouter.navTo('repairScreen',{
@@ -54,10 +55,12 @@ sap.ui.define([
                         oItemsObject[0].setVisible(false);
                         oItemsObject[1].setVisible(false);
                         oItemsObject[2].setVisible(false);
+                        // this.getView().getModel('local').setProperty('/buttonTxt', 'Recapture');
                     } catch (err) {
                         console.log(err);
                     }
                 };
+                this.getView().getModel('local').setProperty('/buttonTxt', 'Recapture');
                 reader.readAsDataURL(files[0]);
             }
         },

@@ -27,6 +27,9 @@ sap.ui.define([
             onRefresh:function(){
                 this.getView().getModel().refresh();
             },
+            onFilter: function(){
+                MessageToast.show('Functionality will implemented soon');
+            },
             onCreateNotifications:function(){
                 if(!this.CreateNotification){
                     this.CreateNotification = sap.ui.xmlfragment(this.getView().getId(), "poc.centi.mark.centimarkui.fragments.CreateNotification", this)
@@ -39,14 +42,14 @@ sap.ui.define([
             },
             onClickCreate:function(oEvent){
                   debugger;
-                  var notifjobtyp = this.getView().byId('idJob').getSelectedItem().getProperty('text');
-                  var oNewNotif = this.getView().getModel('local').getProperty('/');
+                  this.notifjobtyp = this.getView().byId('idJob').getSelectedItem().getProperty('text');
+                  this.oNewNotif = this.getView().getModel('local').getProperty('/');
                   var newNotifData = {
-                    "USERNAME": oNewNotif.Username,
-                    "CUSTOMER": oNewNotif.Customer,
+                    "USERNAME":  this.oNewNotif.Username,
+                    "CUSTOMER":this.oNewNotif.Customer,
                     "STATUS": "Scheduled",
-                    "DESCRIPTION": oNewNotif.Description,
-                    "JOB_TYPE": notifjobtyp,
+                    "DESCRIPTION": this.oNewNotif.Description,
+                    "JOB_TYPE": this.notifjobtyp,
                     "WP_STATUS" : 'S'
                   }
                 //   var that = this;
@@ -62,6 +65,15 @@ sap.ui.define([
                   this.CreateNotification.close();
                 //   this.getView().getModel().refresh();
                
+            },
+            iconNotifformatter: function(oImage){
+                debugger;
+                if(oImage.toUpperCase() == 'REPAIRING'){
+                    return './images/typ1.jpg';
+                }
+                else{
+                    return './images/bucket.jpg'
+                }
             },
             onCloseDetail: function() {
                 this.AddressPopup.close();
