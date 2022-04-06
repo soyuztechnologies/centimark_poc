@@ -11,18 +11,50 @@ sap.ui.define([
         return Controller.extend("poc.centi.mark.centimarkui.controller.Notifications", {
             onInit: function () {
                 this.oRouter =  this.oRouter = this.getOwnerComponent().getRouter();
+                this.oRouter.getRoute('NoticeView').attachMatched(this.handleRouteMatched , this)
             },
             AddressPopup: null,
-            onListButtonPress: function(oEvent) {
+            handleRouteMatched:function(oEvent){
                 debugger;
+                // this.getView().getModel('local').setProperty('/visibility',true);
+            },
+            onListButtonPress: function(oEvent) {
+                
+                // debugger;
+                
+                var oBtn = oEvent.getSource().getProperty('text');
                 this.NotificationData = oEvent.getSource().getParent().getBindingContext().getObject();
+                this.oNOT_NO = this.NotificationData.NOT_NO;
                 var sNotNum = oEvent.getSource().getParent().getBindingContext().getObject().NOT_NUM;
                 this.getView().getModel("local").setProperty("/NotificationNum", sNotNum);
-                if(!this.AddressPopup) {
-                    this.AddressPopup = sap.ui.xmlfragment("poc.centi.mark.centimarkui.fragments.details", this);
-                    this.getView().addDependent(this.AddressPopup);
+                if(oBtn.toUpperCase() == "START WORK"){
+                    var oWpStatus = {
+                        "WP_STATUS" : "CONTINUE WORK",
+                        "STATUS" : "IN-PROGRESS"
+                    }
+                    var oDataUpdateModel = this.getView().getModel();
+                    oDataUpdateModel.update(`/NotificationsSet(NOT_NO=guid'`+this.oNOT_NO+`')`,oWpStatus);
+                    oDataUpdateModel.refresh();
+
+                    if(!this.AddressPopup) {
+                        this.AddressPopup = sap.ui.xmlfragment("poc.centi.mark.centimarkui.fragments.details", this);
+                        this.getView().addDependent(this.AddressPopup);
+                    }
+                    this.AddressPopup.open();
+                }  else if(oBtn.toUpperCase() == "SUSPENDED TICKET"){
+                    MessageToast.show("You can't start work on a Suspended Ticket");
+                    // this.getView().getModel('local').setProperty('/visibility',false);
                 }
-                this.AddressPopup.open();
+                else{
+                    var oWpStatus = {
+                        "WP_STATUS" : "START WORK",
+                        "STATUS" : "Travel"
+                    }
+                    var oDataUpdateModel = this.getView().getModel();
+                    oDataUpdateModel.update(`/NotificationsSet(NOT_NO=guid'`+this.oNOT_NO+`')`,oWpStatus);
+                    oDataUpdateModel.refresh();
+                }
+                
             },
             onRefresh:function(){
                 this.getView().getModel().refresh();
@@ -41,16 +73,16 @@ sap.ui.define([
                 this.CreateNotification.close();
             },
             onClickCreate:function(oEvent){
-                  debugger;
+                //   debugger;
                   this.notifjobtyp = this.getView().byId('idJob').getSelectedItem().getProperty('text');
                   this.oNewNotif = this.getView().getModel('local').getProperty('/');
                   var newNotifData = {
                     "USERNAME":  this.oNewNotif.Username,
                     "CUSTOMER":this.oNewNotif.Customer,
-                    "STATUS": "Scheduled",
+                    "STATUS": "SCHEDULED",
                     "DESCRIPTION": this.oNewNotif.Description,
                     "JOB_TYPE": this.notifjobtyp,
-                    "WP_STATUS" : 'S'
+                    "WP_STATUS" : 'START TRAVEL'
                   }
                 //   var that = this;
                   var oDataModel = this.getView().getModel();
@@ -66,8 +98,24 @@ sap.ui.define([
                 //   this.getView().getModel().refresh();
                
             },
+            // buttonStatusOnClick:function(oStatus){
+            //     debugger;
+            //     if(oStatus.toUpperCase() == 'START TRAVEL'){
+            //         // var oWpStatus = {"WP_STATUS" : "START TRAVEL"}
+            //         // var oDataUpdateModel = this.getView().getModel();
+            //         // oDataUpdateModel.update(`/NotificationsSet(NOT_NO=guid'`+this.oNOT_NO+`')`,oWpStatus);
+            //         // this.getView().getModel().setProperty('WP_STATUS','START TRAVEL');
+                    
+            //     }else{
+            //         return oStatus;
+            //     }
+            //     this.getView().getModel().setProperty('/WP_STATUS',oStatus);
+                
+               
+                // return oStatus;
+            // },
             iconNotifformatter: function(oImage){
-                debugger;
+                // debugger;
                 if(oImage.toUpperCase() == 'REPAIRING'){
                     return './images/typ1.jpg';
                 }

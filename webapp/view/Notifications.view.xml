@@ -21,10 +21,10 @@
                         <Button text="Create New Notification" icon="sap-icon://add" press="onCreateNotifications"></Button>
                     </Toolbar>
                 </headerToolbar>
-                <CustomListItem class="sapUiLargeMarginBeginEnd sapUiSmallMarginBottom">
+                <CustomListItem class="sapUiLargeMarginBeginEnd sapUiSmallMarginBottom" >
                     <HBox alignItems="Center" justifyContent="SpaceBetween" alignContent="Center" >
                         <items>
-                            <HBox alignItems="Center" justifyContent="Start" alignContent="Center">
+                            <HBox alignItems="Center" justifyContent="Start" alignContent="Center" >
                                 <Image src="{path:'JOB_TYPE' , formatter:'.iconNotifformatter'}" class="sapUiLargeMarginBegin" height="40px" width="40px"></Image>
                                 <ObjectHeader
                                     title="{NOT_NUM} - {USERNAME} ({STATUS})"
@@ -32,7 +32,7 @@
                                     <ObjectAttribute text="{DESCRIPTION}" />
                                 </ObjectHeader>
                             </HBox>
-                            <Button text="{WP_STATUS}" width="150px" class="sapUiSmallMarginEnd" press="onListButtonPress"></Button>
+                            <Button text="{path:'WP_STATUS'}" width="150px" class="sapUiSmallMarginEnd" press="onListButtonPress"></Button>
                         </items>
                     </HBox>
                 </CustomListItem>
