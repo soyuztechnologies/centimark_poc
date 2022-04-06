@@ -1,9 +1,11 @@
 sap.ui.define([ 
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageToast"
-], function(Controller, MessageToast) {
+    "sap/m/MessageToast",
+    "poc/centi/mark/centimarkui/utils/formatter"
+], function(Controller, MessageToast, formatter) {
     'use strict';
     return Controller.extend("poc.centi.mark.centimarkui.controller.RepairArea",{
+        formatter: formatter,
         onInit: function() {
             this.oRouter = this.getOwnerComponent().getRouter();
             this.oRouter.getRoute('repairScreen').attachMatched(this.handleRouteMatched , this)
@@ -21,8 +23,43 @@ sap.ui.define([
                     expand: "NAVBuilding"
                 });
             }
-            this.getView().getModel("local").setProperty("/BuildingName", "Repair Area");
+            this.LoadFirstBuilding(sNotId, sPath);
+            var oModel = this.getView().getModel();
+            oModel.setDefaultBindingMode(sap.ui.model.BindingMode.TwoWay);
+            // this.getView().getModel("local").setProperty("/BuildingName", "Repair Area");
 
+        },
+        LoadFirstBuilding: function(sNotId, sPath) {
+            if (sNotId) {
+                var that = this;
+                var oModel = this.getView().getModel();
+                oModel.read(sPath, {
+                    urlParameters: {
+                        "$expand": "NAVBuilding"
+                    },
+                    success: function(oRes) {
+                        debugger;
+                        var oBuildingData = oRes.NAVBuilding.results[0];
+                        var sNotId = oBuildingData.NOT_NO;
+                        var sBuildID = oBuildingData.BUID_ID;
+                        that.BindDashbordToBuilding(sNotId, sBuildID);
+                    },
+                    error: function(oErr) {
+                        debugger;
+                    }
+                });
+            }
+        },
+        BindDashbordToBuilding: function(sNotifID, sBuildID) {
+            if(sNotifID && sBuildID) {
+                var oModel = this.getView().getModel();
+                var sBuildPath = oModel.createKey("/BuildingSet", {
+                    "NOT_NO": sNotifID,
+                    "BUID_ID": sBuildID
+                });
+                var oGridList = this.getView().byId("repairAreaList");
+                oGridList.bindElement(sBuildPath);
+            }
         },
         onBack: function(){
             this.oRouter.navTo('NoticeView');  
@@ -32,13 +69,15 @@ sap.ui.define([
         },
         SetupPopup: null,
         onPressRepairTile: function(oEvent) {
+            var BuildingData = oEvent.getSource().getBindingContext().getObject();
             // if(!this.SetupPopup) {
             //     this.SetupPopup = sap.ui.xmlfragment("poc.centi.mark.centimarkui.fragments.SetupPopup", this);
             //     this.getView().addDependent(this.SetupPopup);
             // }
             // this.SetupPopup.open();
             this.oRouter.navTo("safetyScreen", {
-                NtfID: this.NotId
+                NtfID: this.NotId,
+                BuildID: BuildingData.BUID_ID
             });
         },
         onCancelSetup: function() {
@@ -50,25 +89,46 @@ sap.ui.define([
             this.SetupPopup.close();
         },
         editBuildingPopup: null,
-        onEditBuilding: function() {
+        onEditBuilding: function(oEvent) {
+            debugger;
+            var sPath = oEvent.getSource().getBindingContext().getPath();
             if(!this.editBuildingPopup) {
                 this.editBuildingPopup = sap.ui.xmlfragment(this.getView().getId(), "poc.centi.mark.centimarkui.fragments.EditBuildPopup", this);
                 this.getView().addDependent(this.editBuildingPopup);
             }
             this.editBuildingPopup.open();
+            this.editBuildingPopup.bindElement(sPath);
         },
         onCancelBuildPopup: function() {
             this.editBuildingPopup.close();
         },
         onConfirmBuild: function(oEvent) {
             debugger;
-            var sAreaName = this.getView().byId("buildingNameField").getValue();
-            if(!sAreaName) {
-                sAreaName = "Repair Area";
+            var oBuildObject = oEvent.getSource().getBindingContext().getObject();
+            var sPath = oEvent.getSource().getBindingContext().getPath();
+            var that = this;
+            var oPayload = {
+                "NAME": oBuildObject.NAME,
+                "COMMENTS": oBuildObject.COMMENTS,
+                "PHOTO": oBuildObject.PHOTO
             }
-            this.getView().getModel("local").setProperty("/BuildingName", sAreaName);
-            this.editBuildingPopup.close();
-            MessageToast.show("Building Saved");
+            var oModel = this.getView().getModel();
+            oModel.update(sPath, oPayload, {
+                success: function(oRes) {
+                    debugger;
+                    that.editBuildingPopup.close();
+                    MessageToast.show("Building Saved");
+                },
+                error: function(oErr) {
+                    debugger;
+                }
+            })
+            // var sAreaName = this.getView().byId("buildingNameField").getValue();
+            // if(!sAreaName) {
+            //     sAreaName = "Repair Area";
+            // }
+            // this.getView().getModel("local").setProperty("/BuildingName", sAreaName);
+            
             
         },
         convertFileToUrl: function(vContent) {
@@ -89,7 +149,8 @@ sap.ui.define([
             debugger;
             var that = this;
             var files = oEvent.getParameter("files"),
-				oBuildImg = this.getView().byId("idBuildingImg");
+				oBuildImg = this.getView().byId("idBuildingImg"),
+                oCameraIcon = this.getView().byId("idCameraIcon");
 
 			if (!files) {
 				return;
@@ -103,6 +164,8 @@ sap.ui.define([
                         debugger;
                         var vContent = e.currentTarget.result;
                         oBuildImg.setSrc(vContent);
+                        oBuildImg.setVisible(true);
+                        oCameraIcon.setVisible(false);
                     } catch (err) {
                         console.log(err);
                     }

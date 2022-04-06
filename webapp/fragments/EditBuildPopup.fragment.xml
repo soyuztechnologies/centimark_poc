@@ -5,15 +5,16 @@
                 <items>
                     <form:SimpleForm editable="true" layout="ColumnLayout" columnsL="2" columnsM="2" >
                         <Label text="Enter Building Name" />
-                        <Input id="buildingNameField" ></Input>
+                        <Input id="buildingNameField" value="{NAME}" ></Input>
                     </form:SimpleForm>
                     <layout:BlockLayout >
                         <layout:BlockLayoutRow >
-                            <layout:BlockLayoutCell >
-                                <VBox alignContent="Center" class="sapUiSmallMarginTopBottom sapUiSmallMarginBeginEnd" alignItems="Center" justifyContent="Center" >
+                            <layout:BlockLayoutCell>
+                                <VBox alignContent="Center"  alignItems="Center" justifyContent="Center" >
                                     <items>
                                         <Label text="Building Overview Photo" design="Bold" />
-                                        <Image id="idBuildingImg" src="./images/camera_icon.png" press="onImgClick" width="100%" height="12rem" alt="" visible="true" ></Image>
+                                        <core:Icon id="idCameraIcon" class="cameraIconBorder sapUiSmallMarginTopBottom" size="5rem" height="12rem" width="20rem" src="sap-icon://camera" visible="{path: 'PHOTO', formatter:'.formatter.getIconVisibility'}" ></core:Icon>
+                                        <Image id="idBuildingImg" class="sapUiSmallMarginTopBottom" src="{PHOTO}" press="onImgClick" width="100%" height="12rem" alt="{./images/camera_icon.png}" visible="{path: 'PHOTO', formatter:'.formatter.getPhotoVisibility'}" ></Image>
                                         <unified:FileUploader id="fileUploderField" style="Accept" mimeType="image/*" sameFilenameAllowed="true" icon="sap-icon://camera" change="onCaptureBuildImg" iconOnly="true" visible="true" iconFirst="true" buttonOnly="true" ></unified:FileUploader>
                                     </items>
                                 </VBox>
@@ -21,7 +22,7 @@
                             <layout:BlockLayoutCell >
                                 <form:SimpleForm >
                                     <Label text="Comments" ></Label>
-                                    <TextArea cols="20" placeholder="Comments" rows="8" ></TextArea>
+                                    <TextArea cols="20" placeholder="Comments" value="{COMMENTS}" rows="8" ></TextArea>
                                 </form:SimpleForm>
                             </layout:BlockLayoutCell>
                         </layout:BlockLayoutRow>

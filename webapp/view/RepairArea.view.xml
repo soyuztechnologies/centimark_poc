@@ -14,11 +14,11 @@
         </headerContent>
         <content>
             <!-- <FlexBox fitContainer="true"> -->
-                <f:GridList width="auto" class="sapUiLargeMarginBeginEnd sapUiSmallMarginTop" itemPress="onPressRepairTile" >
+                <f:GridList id="repairAreaList" width="auto" class="sapUiLargeMarginBeginEnd sapUiSmallMarginTop" itemPress="onPressRepairTile" >
                     <f:headerToolbar>
                         <Toolbar >
                             <core:Icon src="sap-icon://edit" decorative="true" press="onEditBuilding" ></core:Icon>
-                            <Title text="{local>/BuildingName}" />
+                            <Title text="{NAME}" />
                             <ToolbarSpacer />
                             <Button icon="sap-icon://add" text="CREATE BUILDING" ></Button>
                         </Toolbar>

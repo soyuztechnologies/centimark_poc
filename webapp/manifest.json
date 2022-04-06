@@ -115,7 +115,7 @@
         },
         {
           "name": "safetyScreen",
-          "pattern": "Safety/{NtfID}",
+          "pattern": "Safety/{NtfID}/{BuildID}",
           "target": [
             "SafetyDashboard"
           ]

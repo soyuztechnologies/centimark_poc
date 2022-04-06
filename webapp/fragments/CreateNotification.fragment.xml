@@ -11,26 +11,26 @@
      <Input value="{local>/Not_Num}"/> -->
 
      <Label text="Username" design="Bold"/>
-     <Input value="{local>/Username}"/>
+     <Input value="{local>USERNAME}"/>
 
      <Label text="Customer" design="Bold"/>
-     <Input value="{local>/Customer}"/>
+     <Input value="{local>CUSTOMER}"/>
 
      <Label text="Description" design="Bold"/>
-     <Input value="{local>/Description}"/>
+     <Input value="{local>DESCRIPTION}"/>
 
      <Label text="Job Type" design="Bold"/>
-     <Select id="idJob">
-        <c:Item text="Maintenence"></c:Item>
-        <c:Item text="Repairing"></c:Item>
+     <Select id="idJob" selectedKey="{local>JOB_TYPE}">
+        <c:Item text="Maintenence" key="Maintenence"></c:Item>
+        <c:Item text="Repairing" key="Repairing"></c:Item>
     </Select>
 
 </form:SimpleForm>
 <beginButton>
-    <Button type="Emphasized" text="Create" press="onClickCreate"/>
+    <Button text="Cancel"  press="onCancelNotif" type="Reject"/>
 </beginButton>
 <endButton>
-    <Button text="Cancel" press="onCancelNotif" type="Emphasized"/>
+    <Button type="Emphasized" text="Create" press="onClickCreate"/>
 </endButton>
 </Dialog>
 </c:FragmentDefinition>

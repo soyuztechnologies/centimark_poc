@@ -17,7 +17,7 @@
             </Toolbar>
         </headerContent>
         <content>
-            <List width="auto" items="{/TemplateSet}" class="sapUiLargeMarginBeginEnd sapUiSmallMarginTop" >
+            <List width="auto" id="idSafetyList" items="{/TemplateSet}" class="sapUiLargeMarginBeginEnd sapUiSmallMarginTop" >
                 <headerToolbar>
                     <Toolbar class="sapUiLargeMarginBeginEnd" >
                         <!-- <Button icon="sap-icon://edit" text="Setup" type="Transparent" ></Button> -->
@@ -35,14 +35,14 @@
                                     <items>
                                         <core:Icon src="sap-icon://status-positive" color="#f9a429" size="2rem" class="sapUiLargeMarginBeginEnd" ></core:Icon>
                                         <core:Icon src="sap-icon://notification-2" size="2rem" ></core:Icon>
-                                        <VBox justifyContent="Center" height="80px" width="140px" class="sapUiSmallMarginBeginEnd photoBoxDesign" backgroundDesign="Solid" alignItems="Center" alignContent="Start" >
+                                        <VBox justifyContent="Center" visible="{path: 'PHOTO', formatter: '.formatter.getSaftyListImgBoxVisibility'}" height="80px" width="140px" class="sapUiSmallMarginBeginEnd photoBoxDesign" backgroundDesign="Solid" alignItems="Center" alignContent="Start" >
                                             <items>
                                                 <core:Icon src="sap-icon://camera"  size="2rem" ></core:Icon>
                                                 <Text text="PHOTO" ></Text>
-                                                <Text text="REQUIRED" ></Text>
-                                                <Image visible="false" height="90px" width="140px" ></Image>
+                                                <Text text="{= ${IS_REQ} === true ? 'REQUIRED':'OPTIONAL'}" ></Text>
                                             </items>
                                         </VBox>
+                                        <Image visible="{path: 'PHOTO', formatter: '.formatter.getSaftyListImgVisibility'}" src="{PHOTO}" class="sapUiSmallMarginBeginEnd" height="90px" width="140px" ></Image>
                                         
                                         <VBox height="70px" justifyContent="SpaceBetween">
                                             <items>
@@ -52,7 +52,13 @@
                                         </VBox>
                                     </items>
                                 </HBox>
-                                <unified:FileUploader buttonText="{local>/buttonTxt}" buttonOnly="true" mimeType="image/*" sameFilenameAllowed="true" class="sapUiSmallMarginEnd" change="onPhotoCapture"></unified:FileUploader>
+                                <HBox>
+                                    <items>
+                                        <Button width="150px" text="MARK COMPLETE" visible="{= ${IS_REQ} === true ? false : true}" class="sapUiSmallMarginEnd" ></Button>
+                                        <unified:FileUploader width="150px" buttonText="{path: 'PHOTO', formatter:'.formatter.getSaftyListBtnText'}" visible="{IS_REQ}" buttonOnly="true" mimeType="image/*" sameFilenameAllowed="true" class="sapUiSmallMarginEnd" change="onPhotoCapture"></unified:FileUploader>
+                                    </items>
+                                </HBox>
+                                
                                 <!-- <Image src="./images/camera_icon.png" class="sapUiSmallMarginBegin sapUiTinyMarginTopBottom" width="8rem" height="6rem"></Image> -->
 
                             </items>

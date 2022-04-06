@@ -7,7 +7,7 @@
             </form:SimpleForm>
         </content>
         <buttons>
-            <Button text="Cancel" press="onCancelSetup" />
+            <!-- <Button text="Cancel" press="onCancelSetup" /> -->
             <Button text="Confirm" press="onConfirmSetup" />
         </buttons>
     </Dialog>

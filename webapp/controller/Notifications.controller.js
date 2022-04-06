@@ -15,12 +15,12 @@ sap.ui.define([
             },
             AddressPopup: null,
             handleRouteMatched:function(oEvent){
-                debugger;
+                // debugger;
                 // this.getView().getModel('local').setProperty('/visibility',true);
             },
             onListButtonPress: function(oEvent) {
                 
-                debugger;
+                // debugger;
                 
                 var oBtn = oEvent.getSource().getProperty('text');
                 this.NotificationData = oEvent.getSource().getParent().getBindingContext().getObject();
@@ -68,39 +68,40 @@ sap.ui.define([
                 MessageToast.show('Functionality will implemented soon');
             },
             onCreateNotifications:function(){
+                var newNotifData = {
+                    "USERNAME":  '',
+                    "CUSTOMER": '',
+                    "STATUS": "SCHEDULED",
+                    "DESCRIPTION": '',
+                    "JOB_TYPE": '',
+                    "WP_STATUS" : 'START TRAVEL'
+                }
+                this.getView().getModel("local").setProperty("/NewNotification", newNotifData);
                 if(!this.CreateNotification){
                     this.CreateNotification = sap.ui.xmlfragment(this.getView().getId(), "poc.centi.mark.centimarkui.fragments.CreateNotification", this)
                     this.getView().addDependent(this.CreateNotification);
                 }
                 this.CreateNotification.open();
+                this.CreateNotification.bindElement("local>/NewNotification");
             },
             onCancelNotif: function(){
                 this.CreateNotification.close();
             },
             onClickCreate:function(oEvent){
-                //   debugger;
-                  this.notifjobtyp = this.getView().byId('idJob').getSelectedItem().getProperty('text');
-                  this.oNewNotif = this.getView().getModel('local').getProperty('/');
-                  var newNotifData = {
-                    "USERNAME":  this.oNewNotif.Username,
-                    "CUSTOMER":this.oNewNotif.Customer,
-                    "STATUS": "SCHEDULED",
-                    "DESCRIPTION": this.oNewNotif.Description,
-                    "JOB_TYPE": this.notifjobtyp,
-                    "WP_STATUS" : 'START TRAVEL'
-                  }
-                //   var that = this;
+                  debugger;
+                  var oNewNotif = this.getView().getModel('local').getProperty('/NewNotification');
+                  var sWorkType = this.getView().byId("idJob").getSelectedKey();
+                  oNewNotif.JOB_TYPE = sWorkType;
                   var oDataModel = this.getView().getModel();
-                  oDataModel.create('/NotificationsSet',newNotifData ,{
-                      success: function(odata){
+                  oDataModel.create('/NotificationsSet',oNewNotif ,{
+                      success: function(oRes){
                           MessageToast.show('Notification Created Successfully');
                       },
-                      error: function(oerrdata){
+                      error: function(oErr){
                         MessageToast.show('Notification Creation Failed');
                       }
                   });
                   this.CreateNotification.close();
-                //   this.getView().getModel().refresh();
                
             },
             // buttonStatusOnClick:function(oStatus){
