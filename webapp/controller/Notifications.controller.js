@@ -20,7 +20,7 @@ sap.ui.define([
             },
             onListButtonPress: function(oEvent) {
                 
-                // debugger;
+                debugger;
                 
                 var oBtn = oEvent.getSource().getProperty('text');
                 this.NotificationData = oEvent.getSource().getParent().getBindingContext().getObject();
@@ -44,6 +44,11 @@ sap.ui.define([
                 }  else if(oBtn.toUpperCase() == "SUSPENDED TICKET"){
                     MessageToast.show("You can't start work on a Suspended Ticket");
                     // this.getView().getModel('local').setProperty('/visibility',false);
+                }
+                else if (oBtn.toUpperCase() == "CONTINUE WORK"){
+                    this.oRouter.navTo("repairScreen", {
+                        "NtfID": this.NotificationData.NOT_NO
+                    });
                 }
                 else{
                     var oWpStatus = {
